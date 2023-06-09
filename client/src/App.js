@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 function App() {
   // movies state variable
   const [movies, setMovies] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
 
   //use effect with fetch to movies endpoint
   useEffect(() => {
@@ -12,9 +13,25 @@ function App() {
       .then((data) => setMovies(data));
   }, []);
 
+  const searchBar = () => {
+    null;
+  };
+
+  const handleChange = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+  };
+
   return (
     <div className="App">
       <h3>{movies}</h3>
+      <input
+        className="Search"
+        type="text"
+        placeholder="Search for a movie..."
+        onChange={handleChange}
+        value={searchInput}
+      />
     </div>
   );
 
